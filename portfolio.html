@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nebula Studio | Premium Software Solutions</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;scroll-behavior:smooth;}
+    body{background:#060816;color:#fff;overflow-x:hidden;}
+    body::before{
+      content:'';
+      position:fixed;
+      width:200%;height:200%;
+      background:radial-gradient(circle at center, rgba(128,0,255,0.15), transparent 40%), radial-gradient(circle at 30% 70%, rgba(0,200,255,0.08), transparent 30%);
+      animation:moveBg 20s linear infinite;
+      z-index:-1;
+    }
+    @@keyframes moveBg {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(-10%, -10%);
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+header {
+  padding: 25px 8%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  background: rgba(6, 8, 22, 0.85);
+  backdrop-filter: blur(12px);
+  z-index: 100;
+}
+
+header h1 {
+  font-size: 28px;
+  color: #b388ff;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 25px;
+  font-size: 14px;
+}
+
+section {
+  padding: 90px 8%;
+}
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.hero h2 {
+  font-size: 62px;
+  max-width: 800px;
+  line-height: 1.1;
+  font-weight: 800;
+}
+
+.hero p {
+  margin-top: 20px;
+  font-size: 18px;
+  color: #c8c8d9;
+  max-width: 750px;
+  line-height: 1.8;
+}
+
+.btn {
+  margin-top: 35px;
+  display: inline-block;
+  padding: 14px 28px;
+  background: linear-gradient(90deg, #8f5cff, #00d0ff);
+  border-radius: 30px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.title {
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: #b388ff;
+}
+
+.about-box {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 35px;
+  border-radius: 20px;
+  line-height: 1.9;
+  color: #d6d6e7;
+  box-shadow: 0 0 20px rgba(128, 0, 255, 0.08);
+}
+
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 25px;
+  border-radius: 22px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  transition: 0.4s;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+}
+
+.card h3 {
+  margin-bottom: 15px;
+  color: #fff;
+}
+
+.shots{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:10px;
+  margin:20px 0;
+}
+.shots img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+  border-radius:16px;
+  border:1px solid rgba(255,255,255,0.05);
+  transition:0.4s;
+}
+.shots img:hover{
+  transform:scale(1.04);
+}
+    
+    ul{padding-left:18px;line-height:1.8;color:#cfcfe1;}
+    .pricing{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px;}
+    .price-card{background:rgba(255,255,255,0.03);padding:30px;border-radius:22px;text-align:center;box-shadow:0 0 20px rgba(128,0,255,0.08);}
+    .price-card h3{color:#b388ff;margin-bottom:15px;}
+    .price-card h2{margin-bottom:20px;}
+    .contact-box{text-align:center;background:rgba(255,255,255,0.03);padding:50px;border-radius:24px;}
+    .contact-box a{color:#00d0ff;text-decoration:none;display:block;margin-top:10px;}
+    footer{text-align:center;padding:25px;color:#777;}
+    .why-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:25px;
+}
+.why-card{
+  background:rgba(255,255,255,0.03);
+  padding:28px;
+  border-radius:22px;
+  box-shadow:0 0 20px rgba(128,0,255,0.08);
+  transition:0.4s;
+}
+.why-card:hover{
+  transform:translateY(-8px);
+}
+.why-card h3{
+  margin-bottom:12px;
+  color:#b388ff;
+}
+.why-card p{
+  color:#cfcfe1;
+  line-height:1.8;
+  font-size:14px;
+}
+
+.reveal{
+  opacity:0;
+  transform:translateY(70px);
+  transition:all 1s ease;
+}
+.reveal.active{
+  opacity:1;
+  transform:translateY(0);
+}
+
+#about,
+#projects,
+#pricing,
+#why,
+#contact{
+  scroll-margin-top:100px;
+}
+
+.particles{
+  position:fixed;
+  width:100%;
+  height:100%;
+  top:0;
+  left:0;
+  z-index:-2;
+  overflow:hidden;
+}
+.particles span{
+  position:absolute;
+  display:block;
+  width:3px;
+  height:3px;
+  background:rgba(255,255,255,0.7);
+  border-radius:50%;
+  animation:floatStar linear infinite;
+}
+.particles span:nth-child(1){left:10%;animation-duration:18s;top:90%;}
+.particles span:nth-child(2){left:20%;animation-duration:24s;top:95%;}
+.particles span:nth-child(3){left:35%;animation-duration:20s;top:92%;}
+.particles span:nth-child(4){left:50%;animation-duration:28s;top:97%;}
+.particles span:nth-child(5){left:65%;animation-duration:22s;top:94%;}
+.particles span:nth-child(6){left:75%;animation-duration:26s;top:96%;}
+.particles span:nth-child(7){left:85%;animation-duration:19s;top:91%;}
+.particles span:nth-child(8){left:15%;animation-duration:25s;top:98%;}
+.particles span:nth-child(9){left:40%;animation-duration:21s;top:95%;}
+.particles span:nth-child(10){left:55%;animation-duration:23s;top:93%;}
+.particles span:nth-child(11){left:70%;animation-duration:27s;top:97%;}
+.particles span:nth-child(12){left:90%;animation-duration:20s;top:92%;}
+.particles span:nth-child(13){left:5%;animation-duration:24s;top:96%;}
+.particles span:nth-child(14){left:30%;animation-duration:18s;top:90%;}
+.particles span:nth-child(15){left:60%;animation-duration:26s;top:98%;}
+
+@keyframes floatStar{
+  0%{
+    transform:translateY(0px);
+    opacity:0;
+  }
+  20%{
+    opacity:1;
+  }
+  80%{
+    opacity:1;
+  }
+  100%{
+    transform:translateY(-1200px);
+    opacity:0;
+  }
+}
+
+.glow-orb{
+  position:fixed;
+  border-radius:50%;
+  filter:blur(100px);
+  z-index:-3;
+  opacity:0.25;
+  animation:orbMove 18s infinite alternate ease-in-out;
+}
+.orb1{
+  width:300px;
+  height:300px;
+  background:#7b2cff;
+  top:10%;
+  left:5%;
+}
+.orb2{
+  width:250px;
+  height:250px;
+  background:#00d0ff;
+  bottom:10%;
+  right:10%;
+}
+@keyframes orbMove{
+  from{transform:translate(0,0);}
+  to{transform:translate(80px,-50px);}
+}
+
+.founder-profile{
+  text-align:center;
+  margin-bottom:30px;
+}
+.founder-profile img{
+  width:200px;
+  height:200px;
+  border-radius:50%;
+  object-fit:cover;
+  border:4px solid rgba(179,136,255,0.7);
+  box-shadow:0 0 25px rgba(128,0,255,0.35);
+  image-rendering:auto;
+}
+.founder-profile h3{
+  margin-top:15px;
+  font-size:22px;
+  color:#ffffff;
+  font-weight:600;
+}
+
+.pricing{
+  display:none;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:25px;
+}
+.active-price{
+  display:grid;
+}
+.pricing-tabs{
+  text-align:center;
+  margin-bottom:35px;
+}
+.tab-btn{
+  padding:12px 25px;
+  margin:0 8px;
+  border:none;
+  border-radius:25px;
+  background:rgba(255,255,255,0.05);
+  color:#fff;
+  cursor:pointer;
+  font-weight:600;
+  transition:0.3s;
+}
+
+.save-badge{
+  background:#00d0ff;
+  color:#06101f;
+  font-size:10px;
+  padding:4px 8px;
+  border-radius:20px;
+  margin-left:6px;
+  font-weight:700;
+}
+
+.tab-btn.active{
+  background:linear-gradient(90deg,#8f5cff,#00d0ff);
+}
+
+.card{
+  cursor:pointer;
+}
+
+.project-detail-page{
+  display:none;
+  padding:110px 8%;
+  min-height:100vh;
+  animation:fadeInPage 0.6s ease;
+}
+
+.project-detail-page.show{
+  display:block;
+}
+
+@keyframes fadeInPage{
+  from{
+    opacity:0;
+    transform:translateY(30px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.project-detail-container{
+  max-width:1200px;
+  margin:0 auto;
+}
+
+.breadcrumb{
+  margin-bottom:20px;
+  font-size:14px;
+  color:#aeb2c7;
+}
+
+.breadcrumb a{
+  color:#00d0ff;
+  text-decoration:none;
+}
+
+.breadcrumb span{
+  margin:0 6px;
+}
+
+.back-btn{
+  margin-top:0;
+  margin-bottom:35px;
+}
+
+.detail-gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  gap:30px;
+  margin-top:35px;
+}
+
+.detail-shot{
+  background:rgba(255,255,255,0.03);
+  padding:20px;
+  border-radius:22px;
+  box-shadow:0 0 20px rgba(128,0,255,0.08);
+}
+
+.detail-shot img{
+  width:100%;
+  height:240px;
+  object-fit:cover;
+  border-radius:14px;
+  cursor:pointer;
+  transition:0.4s;
+}
+
+.detail-shot img:hover{
+  transform:scale(1.02);
+}
+
+.detail-shot h3{
+  margin-top:18px;
+  margin-bottom:10px;
+  color:#b388ff;
+}
+
+.detail-shot p{
+  color:#cfcfe1;
+  line-height:1.8;
+  font-size:14px;
+}
+
+.image-lightbox{
+  position:fixed;
+  top:0;left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.92);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  opacity:0;
+  visibility:hidden;
+  transition:0.3s;
+  z-index:1001;
+}
+.image-lightbox.show{
+  opacity:1;
+  visibility:visible;
+}
+.image-lightbox img{
+  max-width:85%;
+  max-height:85%;
+  border-radius:18px;
+}
+
+.home-logo{
+  color:#b388ff;
+  text-decoration:none;
+}
+
+.to-top{
+  position:fixed;
+  right:30px;
+  bottom:30px;
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  background:linear-gradient(90deg,#8f5cff,#00d0ff);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:22px;
+  cursor:pointer;
+  box-shadow:0 0 18px rgba(128,0,255,0.35);
+  z-index:998;
+  opacity:0;
+  visibility:hidden;
+  transition:0.4s;
+}
+.to-top.show-top{
+  opacity:1;
+  visibility:visible;
+}
+.to-top:hover{
+  transform:translateY(-5px);
+}
+
+.menu-toggle{
+  display:none;
+  font-size:28px;
+  cursor:pointer;
+  color:#fff;
+}
+
+.contact-icons{
+  display:flex;
+  justify-content:center;
+  gap:24px;
+  margin-top:25px;
+}
+
+.contact-icons a{
+  width:56px;
+  height:56px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#ffffff;
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.08);
+  box-shadow:0 0 20px rgba(128,0,255,0.08);
+  transition:0.35s ease;
+  text-decoration:none;
+}
+
+.contact-icons a:hover{
+  transform:translateY(-6px) scale(1.08);
+  background:linear-gradient(90deg,#8f5cff,#00d0ff);
+  color:#ffffff;
+  box-shadow:0 0 25px rgba(128,0,255,0.25);
+}
+
+.contact-icons svg{
+  width:26px;
+  height:26px;
+}
+
+    @media(max-width:768px){
+  .hero h2{font-size:40px;}
+
+  .menu-toggle{
+    display:block;
+  }
+
+ nav{
+  position:absolute;
+  top:80px;
+  right:8%;
+  background:rgba(6,8,22,0.96);
+  backdrop-filter:blur(12px);
+  border-radius:16px;
+  padding:20px;
+  width:200px;
+  box-shadow:0 0 20px rgba(128,0,255,0.15);
+
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(-15px);
+  transition:0.35s ease;
+}
+
+nav.show-menu{
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0);
+}
+
+  nav a{
+  display:block;
+  margin:14px 0;
+  font-size:14px;
+  opacity:0;
+  transform:translateY(-8px);
+  transition:0.3s;
+}
+
+nav.show-menu a{
+  opacity:1;
+  transform:translateY(0);
+}
+}
+  </style>
+</head>
+<body>
+
+  <div class="particles">
+  <span></span><span></span><span></span><span></span><span></span>
+  <span></span><span></span><span></span><span></span><span></span>
+  <span></span><span></span><span></span><span></span><span></span>
+</div>
+
+<div class="glow-orb orb1"></div>
+<div class="glow-orb orb2"></div>
+
+<header>
+  <h1><a href="#" class="home-logo">Nebula Studio</a></h1>
+
+  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+  <nav id="mobileNav">
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#why">Why Choose Us</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section class="hero reveal">
+  <h2>All in One Systems to Run Your Business Better</h2>
+  <p>Nebula Studio helps businesses simplify workflows, automate administration, and centralize critical company operations through modern cloud-based software solutions</p>
+  <a href="#projects" class="btn">Explore Our Solutions</a>
+</section>
+
+<section id="about" class="reveal">
+  <h2 class="title">About Nebula Studio</h2>
+
+
+  <div class="about-box">
+    Nebula Studio focuses on developing smooth, user-friendly, and operationally effective internal software applications for growing companies. Every system is designed to solve repetitive manual work, increase business visibility, and deliver practical automation without complicated enterprise overhead.
+  </div>
+</section>
+
+<section id="projects" class="reveal">
+  <h2 class="title">Featured Software Solutions</h2>
+  <div class="projects">
+
+    <div class="card" onclick="openProject('warehouse')">
+      <h3>Warehouse Management System</h3>
+     <div class="shots">
+  <img src="assets/warehousecover.png" alt="Warehouse Management System">
+</div>
+      <p style="text-align: justify;">
+  A comprehensive business management application featuring real-time inventory tracking with inbound and outbound history, integrated paid and unpaid customer order monitoring, automatic stock deduction from orders, monthly and yearly income analytics dashboards, and push notifications for paid orders.
+</p>
+    </div>
+
+    <div class="card" onclick="openProject('documentation')">
+      <h3>Smart Project Documentation System</h3>
+      <div class="shots">
+  <img src="assets/projectmanagement.png" alt="Smart Project Documentation System">
+</div>
+       <p style="text-align: justify;">
+  A streamlined document automation system featuring instant PDF quotation creation, automatic invoice generation with signature support, a unique smart file naming system, rapid contract agreement generation, and a fully mobile-accessible workflow.
+</p>
+    </div>
+
+    <div class="card" onclick="openProject('company')">
+      <h3>Internal Company Data Management</h3>
+      <div class="shots">
+  <img src="assets/companymanagement.png" alt="Internal Company Data Management">
+</div>
+      <p style="text-align: justify;">
+  A secure internal data management system featuring private company record storage, income and expense financial history tracking, monthly performance monitoring, yearly business reporting dashboards, and a controlled user access environment.
+</p>
+    </div>
+
+  </div>
+</section>
+
+<section id="pricing" class="reveal">
+  <h2 class="title">Subscription Plans</h2>
+
+  <div class="pricing-tabs">
+    <button class="tab-btn active" onclick="showPricing('monthly')">Monthly</button>
+    <button class="tab-btn" onclick="showPricing('yearly')">
+  Yearly <span class="save-badge">Save 10%</span>
+</button>
+  </div>
+
+  <div id="monthly" class="pricing active-price">
+    <div class="price-card">
+      <h3>Basic</h3>
+      <h2>1,500,000 IDR / month</h2>
+      <p>Up to 10 Users</p>
+      <p>Maintenance Included</p>
+    </div>
+    <div class="price-card">
+      <h3>Pro</h3>
+      <h2>2,700,000 IDR / month</h2>
+      <p>Up to 20 Users</p>
+      <p>Maintenance Included</p>
+      <p>Features Update</p>
+    </div>
+    <div class="price-card">
+      <h3>Enterprise</h3>
+      <h2>5,000,000 IDR / month</h2>
+      <p>Up to 50 Users</p>
+      <p>Maintenance Included</p>
+      <p>Features Update</p>
+      <p>Custom Development Support</p>
+    </div>
+  </div>
+
+  <div id="yearly" class="pricing">
+    <div class="price-card">
+      <h3>Basic</h3>
+      <h2>16,200,000 IDR / year</h2>
+      <p>Up to 10 Users</p>
+      <p>Maintenance Included</p>
+    </div>
+    <div class="price-card">
+      <h3>Pro</h3>
+      <h2>29,160,000 IDR / year</h2>
+      <p>Up to 20 Users</p>
+      <p>Maintenance Included</p>
+      <p>Features Update</p>
+    </div>
+    <div class="price-card">
+      <h3>Enterprise</h3>
+      <h2>54,000,000 IDR / year</h2>
+      <p>Up to 50 Users</p>
+      <p>Maintenance Included</p>
+      <p>Features Update</p>
+      <p>Custom Development Support</p>
+    </div>
+  </div>
+</section>
+
+<section id="why" class="reveal">
+  <h2 class="title">Why Choose Nebula Studio</h2>
+  <div class="why-grid">
+
+    <div class="why-card">
+      <h3>Rapid Development</h3>
+      <p>Systems are developed efficiently without sacrificing user experience, allowing businesses to launch internal tools faster.</p>
+    </div>
+
+    <div class="why-card">
+      <h3>Founder Direct Handling</h3>
+      <p>Every project is personally designed and maintained by the founder, ensuring focused communication and tailored execution.</p>
+    </div>
+
+    <div class="why-card">
+      <h3>Modern Smooth Interface</h3>
+      <p>Applications are built with clean, user-friendly, and mobile-accessible interfaces that are easy for teams to adopt.</p>
+    </div>
+
+    <div class="why-card">
+      <h3>Flexible Custom Request</h3>
+      <p>Clients are free to request custom workflows, features, and business-specific modules according to operational needs.</p>
+    </div>
+
+  </div>
+</section>
+
+<section id="contact" class="reveal">
+  <div class="contact-box">
+    <h2 class="title">Let's Build Your Custom Business System</h2>
+    <p>Businesses are free to request software tailored specifically to their workflow and operational needs.</p>
+
+    <div class="contact-icons">
+      <!-- Email -->
+      <a href="https://mail.google.com/mail/?view=cm&fs=1&to=nebulastuudio@gmail.com&su=Business%20Inquiry"
+   target="_blank"
+   title="Email">
+        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="none"
+             stroke="currentColor" stroke-width="2" stroke-linecap="round"
+             stroke-linejoin="round" viewBox="0 0 24 24">
+          <path d="M4 4h16v16H4z"/>
+          <path d="m22 6-10 7L2 6"/>
+        </svg>
+      </a>
+
+      <!-- WhatsApp -->
+      <a href="https://wa.me/6289679270803" target="_blank" title="WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="none"
+             stroke="currentColor" stroke-width="2" stroke-linecap="round"
+             stroke-linejoin="round" viewBox="0 0 24 24">
+          <path d="M16.72 13.06c-.29-.15-1.72-.85-1.99-.94-.27-.1-.46-.15-.66.15-.19.29-.76.94-.93 1.13-.17.19-.34.22-.63.07-.29-.15-1.22-.45-2.32-1.44-.86-.76-1.44-1.7-1.61-1.99-.17-.29-.02-.44.13-.59.13-.13.29-.34.44-.51.15-.17.19-.29.29-.49.1-.19.05-.37-.02-.51-.07-.15-.66-1.59-.9-2.17-.24-.57-.48-.49-.66-.5h-.56c-.19 0-.51.07-.78.37-.27.29-1.02 1-1.02 2.44 0 1.44 1.05 2.83 1.19 3.02.15.19 2.05 3.13 4.96 4.39.69.29 1.23.46 1.65.59.69.22 1.32.19 1.82.12.56-.08 1.72-.7 1.96-1.37.24-.66.24-1.22.17-1.34-.07-.12-.27-.19-.56-.34z"/>
+          <path d="M20.52 3.48A11.86 11.86 0 0 0 12.04 0C5.52 0 .22 5.3.22 11.82c0 2.08.54 4.11 1.57 5.91L0 24l6.45-1.69a11.8 11.8 0 0 0 5.59 1.42h.01c6.52 0 11.82-5.3 11.82-11.82 0-3.16-1.23-6.12-3.35-8.43z"/>
+        </svg>
+      </a>
+
+      <!-- Instagram -->
+      <a href="https://www.instagram.com/nebulastuudio/" target="_blank" title="Instagram">
+        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="none"
+             stroke="currentColor" stroke-width="2" stroke-linecap="round"
+             stroke-linejoin="round" viewBox="0 0 24 24">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="project-detail" class="project-detail-page">
+  <div class="project-detail-container reveal active">
+    <div class="breadcrumb">
+      <a href="#" onclick="closeProject(); return false;">Home</a>
+      <span>/</span>
+      <span id="breadcrumbTitle">Project</span>
+    </div>
+
+    <a href="#" class="btn back-btn" onclick="closeProject(); return false;">
+      ← Back to Projects
+    </a>
+
+    <div id="projectDetailContent"></div>
+  </div>
+</section>
+
+<div class="image-lightbox" id="imageLightbox" onclick="closeLightbox()">
+  <img id="lightboxImg">
+</div>
+
+<div class="to-top" onclick="scrollToTop()">&#8679;</div>
+
+<footer>
+  © 2026 Nebula Studio — Crafted by Sandi Samudra
+</footer>
+
+<script>
+const reveals = document.querySelectorAll('.reveal');
+
+function revealOnScroll(){
+  reveals.forEach(reveal=>{
+    const windowHeight = window.innerHeight;
+    const revealTop = reveal.getBoundingClientRect().top;
+    const revealPoint = 100;
+
+    if(revealTop < windowHeight - revealPoint){
+      reveal.classList.add('active');
+    }
+  });
+}
+
+window.addEventListener('scroll', revealOnScroll);
+window.addEventListener('load', revealOnScroll);
+</script>
+
+<script>
+function showPricing(type){
+  document.querySelectorAll('.pricing').forEach(p=>p.classList.remove('active-price'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+
+  document.getElementById(type).classList.add('active-price');
+  event.target.classList.add('active');
+}
+</script>
+
+<script>
+function openProject(type){
+  const detailPage = document.getElementById('project-detail');
+  const content = document.getElementById('projectDetailContent');
+  const breadcrumb = document.getElementById('breadcrumbTitle');
+
+  let html = '';
+
+  if(type === 'warehouse'){
+    breadcrumb.textContent = 'Warehouse Management System';
+
+    html = `
+      <h1 class="title">Warehouse Management System</h1>
+      <p>A centralized warehouse monitoring platform designed to control inventory, orders, and revenue in one seamless application.</p>
+
+      <div class="detail-gallery">
+        <div class="detail-shot">
+          <img src="assets/dashboard1.jpg" onclick="showLightbox(this.src)">
+          <h3>Revenue Dashboard</h3>
+          <p>Displays monthly and yearly income with charts and display recent orders.</p>
+        </div>
+
+        <div class="detail-shot">
+          <img src="assets/dashboard2.jpg" onclick="showLightbox(this.src)">
+          <h3>Revenue Details</h3>
+          <p>Monthly revenue breakdown for each warehouse</p>
+        </div>
+
+        <div class="detail-shot">
+          <img src="assets/order1.jpg" onclick="showLightbox(this.src)">
+          <h3>Order Management</h3>
+          <p>Tracks paid and unpaid customer orders.</p>
+        </div>
+
+        <div class="detail-shot">
+          <img src="assets/order2.jpg" onclick="showLightbox(this.src)">
+          <h3>Upload Receipts for Orders</h3>
+          <p>Uploaded receipts automatically mark orders as paid.</p>
+        </div>
+
+        <div class="detail-shot">
+          <img src="assets/inven1.jpg" onclick="showLightbox(this.src)">
+          <h3>Inventory Overview</h3>
+          <p>Real-time stock quantity and product information.</p>
+        </div>
+
+        <div class="detail-shot">
+          <img src="assets/inven2.jpg" onclick="showLightbox(this.src)">
+          <h3>Stock Movement History</h3>
+          <p>Complete inbound and outbound transaction records.</p>
+        </div>
+      </div>
+    `;
+  }
+
+  if(type === 'documentation'){
+    breadcrumb.textContent = 'Smart Project Documentation System';
+
+    html = `
+      <h1 class="title">Smart Project Documentation System</h1>
+      <p>Create quotations, invoices, and contracts within minutes, even from mobile devices.</p>
+
+      <div class="detail-gallery">
+        <div class="detail-shot">
+          <img src="assets/projectpage1.jpg" onclick="showLightbox(this.src)">
+          <h3>Project Page</h3>
+          <p>Overview of the projects</p>
+        </div>
+
+        <div class="detail-shot">
+          <img src="assets/projectpage2.jpg" onclick="showLightbox(this.src)">
+          <h3>Project Detail Page</h3>
+          <p>Detailed information about each project</p>
+        </div>
+
+        <div class="detail-shot">
+          <img src="assets/quotationpage.jpg" onclick="showLightbox(this.src)">
+          <h3>Quotation Generator</h3>
+          <p>Create professional quotations instantly with discount options featured.</p>
+        </div>
+
+        <div class="detail-shot">
+          <img src="assets/invoicepage.jpg" onclick="showLightbox(this.src)">
+          <h3>Invoice Builder</h3>
+          <p>Generate invoices instantly with direct digital signatures.</p>
+        </div>
+
+        <div class="detail-shot">
+          <img src="assets/contractpage.jpg" onclick="showLightbox(this.src)">
+          <h3>Contract Agreement</h3>
+          <p>Create and manage legal contracts with ease.</p>
+        </div>
+      </div>
+    `;
+  }
+
+  if(type === 'company'){
+    breadcrumb.textContent = 'Internal Company Data Management';
+
+    html = `
+      <h1 class="title">Internal Company Data Management</h1>
+      <p>Private software to centralize records, finance, and business reporting.</p>
+
+      
+
+      <div class="detail-gallery">
+
+        <div class="detail-shot">
+          <img src="assets/companypage1.jpg" onclick="showLightbox(this.src)">
+          <h3>Company Page</h3>
+          <p>Company Profile Information</p>
+        </div>
+
+        <div class="detail-shot">
+          <img src="assets/companypage2.jpg" onclick="showLightbox(this.src)">
+          <h3>Company Data</h3>
+          <p>Store important internal company information securely.</p>
+        </div>
+
+        <div class="detail-shot">
+          <img src="assets/financepage1.jpg" onclick="showLightbox(this.src)">
+          <h3>Financial Records</h3>
+          <p>Records of all financial transactions.</p>
+        </div>
+
+        <div class="detail-shot">
+          <img src="assets/financepage2.jpg" onclick="showLightbox(this.src)">
+          <h3>Transaction Details</h3>
+          <p>Detailed information about each financial transaction.</p>
+        </div>
+
+        <div class="detail-shot">
+          <img src="assets/attendancepage1.jpg" onclick="showLightbox(this.src)">
+          <h3>Attendance Monitoring</h3>
+          <p>Track employee attendance and punctuality.</p>
+        </div>
+
+        <div class="detail-shot">
+          <img src="assets/attendancepage2.jpg" onclick="showLightbox(this.src)">
+          <h3>Working Details</h3>
+          <p>Information about employee work schedules and activities.</p>
+        </div>
+      </div>
+    `;
+  }
+
+  content.innerHTML = html;
+
+  document.querySelectorAll('body > section:not(#project-detail)').forEach(section=>{
+    section.style.display = 'none';
+  });
+
+  detailPage.classList.add('show');
+
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+}
+
+function closeProject(){
+  document.getElementById('project-detail').classList.remove('show');
+
+  document.querySelectorAll('body > section:not(#project-detail)').forEach(section=>{
+    section.style.display = '';
+  });
+
+  document.getElementById('projects').scrollIntoView({
+    behavior: 'smooth'
+  });
+}
+
+function showLightbox(src){
+  document.getElementById('lightboxImg').src = src;
+  document.getElementById('imageLightbox').classList.add('show');
+}
+
+function closeLightbox(){
+  document.getElementById('imageLightbox').classList.remove('show');
+}
+</script>
+
+<script>
+const topBtn = document.querySelector('.to-top');
+
+window.addEventListener('scroll', ()=>{
+  if(window.scrollY > 300){
+    topBtn.classList.add('show-top');
+  }else{
+    topBtn.classList.remove('show-top');
+  }
+});
+
+function scrollToTop(){
+  window.scrollTo({
+    top:0,
+    behavior:'smooth'
+  });
+}
+</script>
+
+<script>
+function toggleMenu(){
+  document.getElementById('mobileNav').classList.toggle('show-menu');
+}
+
+document.querySelectorAll('#mobileNav a').forEach(link=>{
+  link.addEventListener('click', ()=>{
+    document.getElementById('mobileNav').classList.remove('show-menu');
+  });
+});
+</script>
+
+</body>
+</html>
